@@ -353,15 +353,7 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
                     if (!isSQLEMPTY(sqlweigt, DataWeight.TableWeight)) {
                         yourweight.setVisibility(View.VISIBLE);
                         enterweight.setVisibility(View.VISIBLE);
-                        maxspeed2.setVisibility(View.INVISIBLE);
-                        username.setVisibility(View.INVISIBLE);
-                        delname.setVisibility(View.INVISIBLE);
-                        delspeed.setVisibility(View.INVISIBLE);
-                        distpurtext.setVisibility(View.INVISIBLE);
-                        penciledit.setVisibility(View.INVISIBLE);
-                        alldist.setVisibility(View.INVISIBLE);
-                        alld.setVisibility(View.INVISIBLE);
-                        weight.setVisibility(View.INVISIBLE);
+                        profcon.setVisibility(View.INVISIBLE);
                     } else {
                         try {
                         Cursor curweight = sqlweigt.query(DataWeight.TableWeight, null, null, null, null, null, null);
@@ -375,15 +367,7 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
                         } else {
                             yourweight.setVisibility(View.VISIBLE);
                             enterweight.setVisibility(View.VISIBLE);
-                            maxspeed2.setVisibility(View.INVISIBLE);
-                            username.setVisibility(View.INVISIBLE);
-                            delname.setVisibility(View.INVISIBLE);
-                            delspeed.setVisibility(View.INVISIBLE);
-                            distpurtext.setVisibility(View.INVISIBLE);
-                            penciledit.setVisibility(View.INVISIBLE);
-                            alldist.setVisibility(View.INVISIBLE);
-                            alld.setVisibility(View.INVISIBLE);
-                            weight.setVisibility(View.INVISIBLE);
+                            profcon.setVisibility(View.INVISIBLE);
                         }
                         curweight.close();
                         mp4.start();
@@ -797,6 +781,7 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
         super.onPause();
 
     }
+
     @Override
     public void onLocationChanged(@NonNull Location location) {
         if (location != null) {
