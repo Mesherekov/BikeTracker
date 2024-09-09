@@ -377,6 +377,10 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
                 }
             }
         });
+        final String[] sped = new String[1];
+        final boolean[] setb = {false};
+        final boolean[] setb2 = {false};
+
         enterweight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -398,6 +402,7 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
                     alldist.setVisibility(View.VISIBLE);
                     alld.setVisibility(View.VISIBLE);
                     weight.setVisibility(View.VISIBLE);
+                    profcon.setVisibility(View.VISIBLE);
                     Intent intent = new Intent(SpeedActivity.this, WeightActivity.class);
                     startActivity(intent);
                 } catch (Exception exception){
@@ -489,9 +494,6 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
             savespeed = cursorprof.getFloat(speedIndex);
             cursorprof.close();
         }
-        final String[] sped = new String[1];
-        final boolean[] setb = {false};
-        final boolean[] setb2 = {false};
 
         addbtn.setOnClickListener(view -> {
             onAddButtonClicked();
@@ -516,9 +518,9 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
                 if (profile.getVisibility() == View.VISIBLE) {
                         if (setclip) {
                             if (!setb2[0]) {
-
+                                alldist.setVisibility(View.VISIBLE);
+                                weight.setVisibility(View.VISIBLE);
                                 profcon.setVisibility(View.VISIBLE);
-
                                 chronometer.setVisibility(View.INVISIBLE);
                                 stop.setVisibility(View.INVISIBLE);
                                 start.setVisibility(View.INVISIBLE);
