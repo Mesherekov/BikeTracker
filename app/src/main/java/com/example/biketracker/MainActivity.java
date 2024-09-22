@@ -1,7 +1,9 @@
 package com.example.biketracker;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         animationView = findViewById(R.id.animationView);
         mplayer = MediaPlayer.create(this, R.raw.bikecycle);
         try {
@@ -38,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
         animationView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+
+                    return;
+                }
                 Intent intent = new Intent(MainActivity.this, SpeedActivity.class);
                 mplayer.stop();
                 startActivity(intent);

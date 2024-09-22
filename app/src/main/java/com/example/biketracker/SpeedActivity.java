@@ -107,6 +107,13 @@ public class SpeedActivity extends AppCompatActivity implements LocationListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spees);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
+
+            return;
+        }
         loadbool();
         tv_speed = findViewById(R.id.textView);
         maxspeed = findViewById(R.id.textView2);
